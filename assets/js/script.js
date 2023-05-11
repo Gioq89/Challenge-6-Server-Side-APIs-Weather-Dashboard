@@ -5,7 +5,7 @@ var apiURL = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lo
 // DOM Elements
 var cityNameInput = document.getElementById('city-name');
 var searchForm = document.querySelector('form');
-var currentWeather = document.getElementById('current-weather');
+var currentWeather = document.getElementById('current-day');
 var forecastSection = document.getElementById('forecast');
 var searchHistory = document.getElementById('search-history');
 
@@ -55,6 +55,9 @@ searchForm.addEventListener("submit", function(event) {
 //   function to retrive specific info for searchWeather function
   function showCurrentWeather(list) {
     var cityName = list.name;
+    var currentDate = dayjs().format("MM/DD/YY");
+    $("#current-day").text(currentDate);
+    var weatherIcon = list.weather.icon;    
     var tempCelsius = list.main.temp;
     var tempFahrenheit = (tempCelsius * 9/5) + 32;
     var wind = list.wind.speed;
@@ -62,10 +65,12 @@ searchForm.addEventListener("submit", function(event) {
   
     var weatherHTML = `
       <h2>${cityName}</h2>
+      <p>${currentDate}<p>
+      <P>${weatherIcon}<p>
       <p>Temp: ${tempFahrenheit} &deg;F</p>
       <p>Wind: ${wind} MPH</p>
       <p>Humidity: ${humidity} %<p>
     `;
-  
+
     currentWeather.innerHTML = weatherHTML;
   }
