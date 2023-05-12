@@ -67,7 +67,7 @@ searchForm.addEventListener("submit", function(event) {
       <h2>${cityName}</h2>
       <p>${currentDate}<p>
       <P>${weatherIcon}<p>
-      <p>Temp: ${tempFahrenheit} &deg;F</p>
+      <p>Temp: ${tempFahrenheit.toFixed(1)} &deg;F</p>
       <p>Wind: ${wind} MPH</p>
       <p>Humidity: ${humidity} %<p>
     `;
