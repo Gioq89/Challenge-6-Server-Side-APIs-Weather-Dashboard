@@ -21,10 +21,10 @@
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <section>
+    <section class="search-container">
         <h2>Search for a City:</h2>
         <form>
-            <label for="city-name">Enter City:</label>
+            <label for="city-name">Enter a City Name:</label>
             <input type="text" id="city-name" placeholder="City Name">
             <button type="submit" class="">Search</button>
         </form>
@@ -40,9 +40,9 @@
         <div id="forecast"></div>
       </section>
   
-      <section>
+      <section id="search-history">
         <h2>Search History</h2>
-        <ul id="search-history"></ul>
+        <ul id="search-history-list"></ul>
       </section>
 
       <form id="api-key-form" style="display: none; flex-direction: column; width: 300px;">
