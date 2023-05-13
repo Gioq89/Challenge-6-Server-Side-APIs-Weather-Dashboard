@@ -8,6 +8,7 @@
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
+    padding: 15px;
   }
   
   header {
@@ -60,3 +61,36 @@
   button[type="submit"]:hover {
     background-color: #0D47A1;
   }
+
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #2196f3;
+    color: white;
+    min-width: 150px;
+    max-width: 150px;
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .card-header h3 {
+    margin: 0;
+  }
+  
+  .card-header img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  #forecast {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
