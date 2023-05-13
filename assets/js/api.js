@@ -36,5 +36,3 @@ var apiKeyForm =  document.getElementById('api-key-form');
         saveAPIKeys(apiKey1,apiKey2);
         loadAPIKeys();
       }
-
-
