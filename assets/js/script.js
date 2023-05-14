@@ -83,7 +83,7 @@ function getApiKey() {
 //   function to retrive specific info for searchWeather function
 function showCurrentWeather(list) {
   var cityNameInput = list.name;
-  var currentDate = dayjs().format("MM/DD/YYYY");
+  var currentDate = dayjs().format("M/DD/YYYY");
   $("#current-day").text(currentDate);
   var weatherIcon = list.weather[0].icon;
   var tempCelsius = list.main.temp;
@@ -113,7 +113,7 @@ function showFiveDayForecast(list) {
   for (var i = 0; i < list.list.length; i++) {
     var forecast = list.list[i];
     var cityNameForecast = forecast.name;
-    var date = forecast.dt_txt.split(" ")[0] = dayjs().format("MM/DD/YYYY");;
+    var date = forecast.dt_txt.split(" ")[0] = dayjs().format("M/DD/YYYY");;
     var time = forecast.dt_txt.split(" ")[1];
     var hour = time.split(":")[0];
     var weatherIcon = forecast.weather[0].icon;
@@ -126,7 +126,6 @@ function showFiveDayForecast(list) {
       forecastHTML += `
           <div class="card">
             <div class="card-body">
-            <h3>${cityNameForecast}</h3>
             <p class="card-title">${date}</p>
               <img src="https://openweathermap.org/img/wn/${weatherIcon}.png" alt="weather icon">
               <p class="card-text">Temp: ${tempFahrenheit.toFixed(1)} &deg;F</p>
