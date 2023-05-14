@@ -83,7 +83,7 @@ function getApiKey() {
 //   function to retrive specific info for searchWeather function
 function showCurrentWeather(list) {
   var cityNameInput = list.name;
-  var currentDate = dayjs().format("MM/DD/YY");
+  var currentDate = dayjs().format("MM/DD/YYYY");
   $("#current-day").text(currentDate);
   var weatherIcon = list.weather[0].icon;
   var tempCelsius = list.main.temp;
@@ -112,20 +112,25 @@ function showFiveDayForecast(list) {
 
   for (var i = 0; i < list.list.length; i++) {
     var forecast = list.list[i];
-    var date = forecast.dt_txt.split(" ")[0];
+    var cityNameForecast = forecast.name;
+    var date = forecast.dt_txt.split(" ")[0] = dayjs().format("MM/DD/YYYY");;
     var time = forecast.dt_txt.split(" ")[1];
     var hour = time.split(":")[0];
-    var temp = forecast.main.temp;
-    var humidity = forecast.main.humidity;
     var weatherIcon = forecast.weather[0].icon;
+    var tempCelsius = forecast.main.temp;
+    var tempFahrenheit = (tempCelsius * 9) / 5 + 32;
+    var wind = forecast.wind.speed;
+    var humidity = forecast.main.humidity;
 
     if (time === "15:00:00") {
       forecastHTML += `
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">${date}</h5>
+            <h3>${cityNameForecast}</h3>
+            <p class="card-title">${date}</p>
               <img src="https://openweathermap.org/img/wn/${weatherIcon}.png" alt="weather icon">
-              <p class="card-text">Temp: ${temp} &deg;F</p>
+              <p class="card-text">Temp: ${tempFahrenheit.toFixed(1)} &deg;F</p>
+              <p>Wind: ${wind} MPH</p>
               <p class="card-text">Humidity: ${humidity} %</p>
             </div>
           </div>
@@ -153,6 +158,7 @@ function addToSearchHistory(cityName) {
 
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
     displaySearchHistory(searchHistory);
+    searchHistoryListButton(searchHistory);
   }
 }
 
@@ -167,6 +173,21 @@ function displaySearchHistory(searchHistory) {
   }
 }
 
+function searchHistoryListButton(searchHistory) {
+  var searchHistoryList = document.getElementById("search-history-list");
+  searchHistoryList.innerHTML = "";
+  searchHistory.forEach(function(cityName) {
+    var li = document.createElement("li");
+    var button = document.createElement("button");
+    button.innerText = cityName;
+    button.addEventListener("click", function() {
+      getCurrentDayForcast(cityName);
+      getFiveDayForecast(cityName);
+    });
+    li.appendChild(button);
+    searchHistoryList.appendChild(li);
+  });
+}
 window.addEventListener("load", function () {
   var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
   displaySearchHistory(searchHistory);
