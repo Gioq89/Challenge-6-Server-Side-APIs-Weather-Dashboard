@@ -67,7 +67,10 @@
     background-color: #0D47A1;
   }
 
-  #search-history-list {
+  #search-history-list li {
+   list-style-type: none;
+  }
+  #search-history-list button {
     background-color: #2196F3;
     color: #fff;
     padding: 10px;
@@ -78,7 +81,7 @@
     cursor: pointer;
   }
   
-  #search-history-list:hover {
+  #search-history-list button:hover {
     background-color: #0D47A1;
   }
 
@@ -107,6 +110,10 @@
     height: 32px;
   }
   
+  .current-day {
+    padding: 20px;
+  }
+
   #forecast {
     display: flex;
     align-items: center;
@@ -116,6 +123,7 @@
   .wrapper {
     display: flex;
     justify-content: space-between;
+    margin-right: 15px;
   }
   
   
