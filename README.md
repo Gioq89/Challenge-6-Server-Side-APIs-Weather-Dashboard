@@ -8,7 +8,7 @@ Link to application
 https://gioq89.github.io/Challenge-6-Server-Side-APIs-Weather-Dashboard/
 
 Screenshot
-<img src="Assets/images/server-side-APIs.png">
+<img src="assets/images/server-side-APIs.png">
 
 Usage
 To use this assignment, enter a city of your choice the current day weather and the forecast will appear. It will save the information into the local storage and the last 10 searches will appear on screen.
